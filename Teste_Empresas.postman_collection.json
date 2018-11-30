@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "2f0520f2-3ea9-4c48-b512-abbaa0e4793f",
+		"name": "Teste_Empresas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign_in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86c1ca3b-e4a3-45fd-b645-7d578f29035a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "diogopereira@teste.com.br",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "@123456",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://testeioasyswebapiempresas.azurewebsites.net/v1/users/auth/sign_in",
+					"protocol": "https",
+					"host": [
+						"testeioasyswebapiempresas",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"v1",
+						"users",
+						"auth",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Empresas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer BgkgdwD3fDUJE8DCjYI0dHKHjUzg0pC5ZmmF5JjJHwXGYQKTs0V6-KE4otvgLWeh4hoxpUeZfLYuR8VyiPe0ZUIAuEY-tpCMQqq8GqgMBgZdXdIexXrQROGKLiUCY25vZ_h4BqsSdeDwZYl9MZzv5htQ5DFOTvGC6JMqgjSJrfKG57Vx6jE4LLPRTG4YsyVEGBWXrIdzWDz6WowgQdhazObHqEZCuHQSd3Tu4zwLyTubxXTP3jgvRdoW8154JpD3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://testeioasyswebapiempresas.azurewebsites.net/api/v1/enterprises",
+					"protocol": "https",
+					"host": [
+						"testeioasyswebapiempresas",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"enterprises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalhamento de Empresas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer BgkgdwD3fDUJE8DCjYI0dHKHjUzg0pC5ZmmF5JjJHwXGYQKTs0V6-KE4otvgLWeh4hoxpUeZfLYuR8VyiPe0ZUIAuEY-tpCMQqq8GqgMBgZdXdIexXrQROGKLiUCY25vZ_h4BqsSdeDwZYl9MZzv5htQ5DFOTvGC6JMqgjSJrfKG57Vx6jE4LLPRTG4YsyVEGBWXrIdzWDz6WowgQdhazObHqEZCuHQSd3Tu4zwLyTubxXTP3jgvRdoW8154JpD3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://testeioasyswebapiempresas.azurewebsites.net/api/v1/enterprises/1",
+					"protocol": "https",
+					"host": [
+						"testeioasyswebapiempresas",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"enterprises",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtro de Empresas por nome e tipo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer BgkgdwD3fDUJE8DCjYI0dHKHjUzg0pC5ZmmF5JjJHwXGYQKTs0V6-KE4otvgLWeh4hoxpUeZfLYuR8VyiPe0ZUIAuEY-tpCMQqq8GqgMBgZdXdIexXrQROGKLiUCY25vZ_h4BqsSdeDwZYl9MZzv5htQ5DFOTvGC6JMqgjSJrfKG57Vx6jE4LLPRTG4YsyVEGBWXrIdzWDz6WowgQdhazObHqEZCuHQSd3Tu4zwLyTubxXTP3jgvRdoW8154JpD3",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://testeioasyswebapiempresas.azurewebsites.net/api/v1/enterprises?tipo=1&nome=XP Informatica",
+					"protocol": "https",
+					"host": [
+						"testeioasyswebapiempresas",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"enterprises"
+					],
+					"query": [
+						{
+							"key": "tipo",
+							"value": "1"
+						},
+						{
+							"key": "nome",
+							"value": "XP Informatica"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

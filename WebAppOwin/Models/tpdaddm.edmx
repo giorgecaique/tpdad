@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tpdadbdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="consumo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="referencia" Type="datetime" />
+          <Property Name="ano_mes" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="consumo_metros_cubicos" Type="float" />
+          <Property Name="leitura" Type="float" Nullable="false" />
+          <Property Name="valor" Type="float" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" />
+          <Property Name="cpf_cnpj" Type="varchar" MaxLength="20" />
+          <Property Name="senha" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="endereco" Type="varchar" MaxLength="255" />
+          <Property Name="telefone" Type="varchar" MaxLength="15" />
+          <Property Name="data_nascimento" Type="datetime" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" />
+          <Property Name="sexo" Type="varchar" MaxLength="1" />
+          <Property Name="tempo_permanencia" Type="int" />
+          <Property Name="quantidade_pessoas" Type="int" />
+          <Property Name="meta" Type="float" />
+        </EntityType>
+        <Association Name="FK__consumo__id_usua__5DCAEF64">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="consumo" Type="Self.consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="consumo">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tpdadbdModelStoreContainer">
+          <EntitySet Name="consumo" EntityType="Self.consumo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__consumo__id_usua__5DCAEF64" Association="Self.FK__consumo__id_usua__5DCAEF64">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="consumo" EntitySet="consumo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tpdadbdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="tpdadbdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="consumo" EntityType="tpdadbdModel.consumo" />
+          <EntitySet Name="usuario" EntityType="tpdadbdModel.usuario" />
+          <AssociationSet Name="FK__consumo__id_usua__5DCAEF64" Association="tpdadbdModel.FK__consumo__id_usua__5DCAEF64">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="consumo" EntitySet="consumo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="consumo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="referencia" Type="DateTime" Precision="3" />
+          <Property Name="ano_mes" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="consumo_metros_cubicos" Type="Double" />
+          <Property Name="leitura" Type="Double" Nullable="false" />
+          <Property Name="valor" Type="Double" />
+          <NavigationProperty Name="usuario" Relationship="tpdadbdModel.FK__consumo__id_usua__5DCAEF64" FromRole="consumo" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cpf_cnpj" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="endereco" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="data_nascimento" Type="DateTime" Precision="3" />
+          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="tempo_permanencia" Type="Int32" />
+          <Property Name="quantidade_pessoas" Type="Int32" />
+          <Property Name="meta" Type="Double" />
+          <NavigationProperty Name="consumo" Relationship="tpdadbdModel.FK__consumo__id_usua__5DCAEF64" FromRole="usuario" ToRole="consumo" />
+        </EntityType>
+        <Association Name="FK__consumo__id_usua__5DCAEF64">
+          <End Type="tpdadbdModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="tpdadbdModel.consumo" Role="consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="consumo">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tpdadbdModelStoreContainer" CdmEntityContainer="tpdadbdEntities">
+          <EntitySetMapping Name="consumo">
+            <EntityTypeMapping TypeName="tpdadbdModel.consumo">
+              <MappingFragment StoreEntitySet="consumo">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="leitura" ColumnName="leitura" />
+                <ScalarProperty Name="consumo_metros_cubicos" ColumnName="consumo_metros_cubicos" />
+                <ScalarProperty Name="ano_mes" ColumnName="ano_mes" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="tpdadbdModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="quantidade_pessoas" ColumnName="quantidade_pessoas" />
+                <ScalarProperty Name="tempo_permanencia" ColumnName="tempo_permanencia" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="cpf_cnpj" ColumnName="cpf_cnpj" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
